@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咖啡廳網站</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+ /* 頂部區塊 */
+.header {
+    background-image: url('https://www.kkday.com/zh-tw/blog/wp-content/uploads/248%E5%BA%97%E5%85%A7%E7%85%A7.jpg');
+    background-size: cover; /* 讓背景圖片覆蓋整個區塊 */
+    background-position: center; /* 確保圖片置中顯示 */
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    animation: slideDown 1s ease-out; /* 標頭滑動進來的效果 */
+    position: relative; /* 讓遮罩層能夠正確疊加 */
+}
+.header::before {
+    content: ''; /* 內容為空 */
+    position: absolute; /* 絕對定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明的黑色遮罩 */
+    z-index: 0; /* 讓遮罩層在背景圖片下面 */
+}
+
+.header h1, .header p {
+    position: relative; /* 讓標題和文字置於遮罩之上 */
+    z-index: 1;
+}
+/* 菜單區塊 */
+.menu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px 20px;
+    animation: fadeInSection 1s ease-out; /* 菜單區塊淡入效果 */
+    position: relative; /* 使菜單能層疊在最上面 */
+    z-index: 100; /* 設置一個較高的z-index，讓菜單位於最上層 */
+}
+
+/* 頂部區塊 */
+.header {
+    background-color: #9e5b3d; /* 更溫暖的咖啡色 */
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    animation: slideDown 1s ease-out;
+    z-index: 5; /* 設置較低的z-index */
+}
+/* 右上角的導航欄 */
+.navbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999; /* 確保導航欄位於最上層 */
+}
+
+/* 額外調整header的z-index */
+.header {
+    position: relative; /* 確保header有正確的定位 */
+    z-index: 1; /* 設置較低的z-index，確保菜單位於header之上 */
+}
+
+/* 菜單區塊的z-index */
+.menu {
+    position: relative;
+    z-index: 10; /* 設置較高的z-index */
+}
+
+/* 其他區塊的設定 */
+.footer {
+    position: relative; /* 設置position屬性 */
+    z-index: 0; /* 設置較低的z-index */
+}
+/* 甜點區塊 */
+.dessert {
+    background-image: url('https://keelung-for-a-walk.com/wp-content/uploads/2022/04/01-1024x683.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+    animation: fadeInSection 1s ease-out;
+    position: relative;
+}
+ .dessert h2 {
+            font-size: 2.8em;
+            line-height: 1.4;
+            font-weight: 600;
+            text-align: center;
+            color: #fff; /* 修改顏色為白色 */
+            letter-spacing: 1px;
+        }
+.dessert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* 加入暗化效果 */
+    filter: blur(10px); /* 模糊效果 */
+    z-index: 0; /* 確保背景不遮擋內容 */
+}
+
+.dessert h2 {
+    font-size: 2.8em;
+    line-height: 1.4;
+    font-weight: 600;
+    text-align: center;
+    color: #9e5b3d;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1; /* 確保文字顯示在最上層 */
+}
+
+.dessert .menu {
+    position: relative;
+    z-index: 1; /* 確保菜單項目顯示在最上層 */
+}
+/* 甜點區塊 */
+.dessert {
+    background-image: url('https://images.agriharvest.tw/wp-content/uploads/2021/08/%E8%8D%94%E6%9E%9D%E9%80%A0%E5%BD%A2%E7%94%9C%E9%BB%9E-1024x684.jpg');
+    background-size: cover; /* 讓背景圖片填滿整個區塊 */
+    background-position: center; /* 圖片居中顯示 */
+    padding: 40px 20px;
+    margin-top: 40px;
+    position: relative;
+    animation: fadeInSection 1s ease-out;
+}
+
+/* 在背景上加上一層暗色遮罩 */
+.dessert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 這裡的 0.4 是透明度，可以調整 */
+    z-index: 1;
+}
+
+.dessert h2 {
+    font-size: 2.8em;
+    line-height: 1.4;
+    font-weight: 600;
+    text-align: center;
+    color: #fff; /* 修改標題顏色為白色，讓文字更顯眼 */
+    letter-spacing: 1px;
+    z-index: 2; /* 使文字顯示在遮罩層之上 */
+}
+/* 預設設定，去除所有連結的底線 */
+a {
+    text-decoration: none;
+}
+
+/* 對於聯絡區塊中的連結 */
+.contact a {
+    color: #ffcc00;
+    text-decoration: none; /* 去除底線 */
+    font-weight: 600;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.contact a:hover {
+    color: #fff;
+}
+
+/* 對於右上角導航欄中的連結 */
+.navbar a {
+    color: white;
+    text-decoration: none; /* 去除底線 */
+    font-size: 1.2em;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #9e5b3d;
+}
+/* 推薦區塊 */
+.recommended {
+    background-color: #f0f0f0; /* 淺灰色背景 */
+    padding: 40px 20px;
+    margin-top: 40px;
+    text-align: center;
+    animation: fadeInSection 1s ease-out;
+}
+
+.recommended h2 {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: #9e5b3d;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.recommended-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.recommended-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+}
+
+.recommended-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.recommended-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.recommended-item h3 {
+    margin: 15px 0 10px;
+    font-size: 1.8em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #9e5b3d;
+}
+
+.recommended-item p {
+    margin: 0;
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+    letter-spacing: 0.4px;
+}
+
+      /* 設定整體字型 */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 頂部區塊 */
+        .header {
+            background-color: #9e5b3d;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header h1 {
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            font-family: 'Lora', serif;
+        }
+
+        .header img {
+            max-width: 180px;
+            margin: 20px 0;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* 菜單區塊 */
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 20px;
+            animation: fadeInSection 1s ease-out;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            margin-bottom: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            letter-spacing: 0.5px;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: #f4f0e9;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            margin: 15px 0 10px;
+            font-size: 1.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #9e5b3d;
+        }
+
+        .menu-item p {
+            margin: 0 15px;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+            letter-spacing: 0.4px;
+        }
+
+        /* 甜點區塊 */
+        .dessert {
+            background-color: #fff8e1;
+            padding: 40px 20px;
+            margin-top: 40px;
+            animation: fadeInSection 1s ease-out;
+        }
+
+        .dessert h2 {
+            font-size: 2.8em;
+            line-height: 1.4;
+            font-weight: 600;
+            text-align: center;
+            color: #fff; /* 修改顏色為白色 */
+            letter-spacing: 1px;
+        }
+
+        .dessert .menu-item {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 0.5px;
+            overflow: hidden;
+        }
+
+        .dessert .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dessert .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .dessert .menu-item h3 {
+            margin: 15px 0 10px;
+            font-size: 1.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .dessert .menu-item p {
+            margin: 0 15px;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+            letter-spacing: 0.4px;
+        }
+
+        /* 聯絡方式區塊 */
+        .contact {
+            background-color: #9e5b3d;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeInContact 1s ease forwards;
+        }
+
+        @keyframes fadeInContact {
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .contact h2 {
+            font-size: 2.8em;
+            line-height: 1.4;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            line-height: 1.6;
+            letter-spacing: 0.6px;
+        }
+
+        .contact a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .contact a:hover {
+            color: #fff;
+        }
+
+        /* Footer區塊 */
+        .footer {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            letter-spacing: 0.6px;
+        }
+
+        .footer p {
+            font-size: 1em;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* 右上角的導航欄 */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #9e5b3d;
+        }
+
+        /* 調整響應式 */
+        @media (max-width: 768px) {
+            .menu, .dessert .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-item, .dessert .menu-item {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .navbar {
+                top: 10px;
+                right: 10px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 右上角導航欄 -->
+    <div class="navbar">
+        <a href="#coffee">咖啡</a> <!-- 連結到咖啡區塊 -->
+        <a href="#desserts">甜點</a> <!-- 連結到甜點區塊 -->
+        <a href="#recommended">推薦</a> <!-- 連結到推薦區塊 -->
+        <a href="#about">關於我們</a> <!-- 連結到關於我們區塊 -->
+    </div>
+
+    <div class="header">
+        <img src="https://www.shutterstock.com/image-vector/cup-coffee-logo-vector-600nw-2474909129.jpg" alt="咖啡廳Logo">
+        <h1>阿睿咖啡廳</h1>
+        <p>享受每一杯香濃的咖啡~</p>
+    </div>
+
+    <div id="coffee" class="dessert">
+        <h2>咖啡</h2>
+        <div class="menu">
+            <a href="https://qqray.github.io/cocococ/" class="menu-item">
+                <img src="https://img.shoplineapp.com/media/image_clips/62a37ae5c5bf8c003061eae8/original.png?1654880997" alt="拿鐵">
+                <h3>拿鐵</h3>
+                <p>濃郁的咖啡與絲滑的奶泡，完美結合，讓您享受每一口的溫暖。</p>
+            </a>
+            <a href="https://qqray.github.io/coicococo//" class="menu-item">
+                <img src="https://exp-picture.cdn.bcebos.com/bfa52adaf05e4a239496bbab1dd818196020e27d.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_640%2Climit_1%2Fformat%2Cf_auto%2Fquality%2Cq_80" alt="摩卡咖啡">
+                <h3>摩卡</h3>
+                <p>帶有巧克力風味的濃縮咖啡，配上奶泡，香甜又不失濃郁。</p>
+            </a>
+            <a href="https://qqray.github.io/mashcafa/
+" class="menu-item">
+                <img src="https://first-cafe.com/wp-content/uploads/2024/07/Americano-1-1-1024x768.webp" alt="美式咖啡">
+                <h3>美式咖啡</h3>
+                <p>純正的美式咖啡，濃烈的咖啡香氣，清新的口感。</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="desserts" class="dessert">
+        <h2>甜點</h2>
+        <div class="menu">
+            <a href="https://example.com/chocolate-cake" class="menu-item">
+                <img src="https://img.freepik.com/free-photo/sliced-chocolate-cake-on-white-plate_1150-8987.jpg" alt="巧克力蛋糕">
+                <h3>巧克力蛋糕</h3>
+                <p>濃郁的巧克力味，配上細緻的蛋糕層，讓人一口接一口。</p>
+            </a>
+            <a href="https://example.com/cheesecake" class="menu-item">
+                <img src="https://img.freepik.com/free-photo/cheesecake-with-biscuit-base-blue-background_1150-53168.jpg" alt="起司蛋糕">
+                <h3>起司蛋糕</h3>
+                <p>經典的紐約起司蛋糕，濃厚綿密，帶有微妙的酸甜口感。</p>
+            </a>
+            <a href="https://example.com/strawberry-cake" class="menu-item">
+                <img src="https://img.freepik.com/free-photo/close-up-photo-slice-strawberry-cake_1150-50925.jpg" alt="草莓蛋糕">
+                <h3>草莓蛋糕</h3>
+                <p>新鮮草莓與輕盈奶油的完美結合，帶來清爽的甜蜜滋味。</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="recommended" class="recommended">
+        <h2>我們的推薦</h2>
+        <div class="recommended-items">
+            <div class="recommended-item">
+                <img src="https://img.shoplineapp.com/media/image_clips/62a37ae5c5bf8c003061eae8/original.png?1654880997" alt="拿鐵">
+                <h3>拿鐵</h3>
+                <p>濃郁的咖啡與絲滑的奶泡，完美結合，讓您享受每一口的溫暖。</p>
+            </div>
+            <div class="recommended-item">
+                <img src="https://exp-picture.cdn.bcebos.com/bfa52adaf05e4a239496bbab1dd818196020e27d.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_640%2Climit_1%2Fformat%2Cf_auto%2Fquality%2Cq_80" alt="摩卡咖啡">
+                <h3>摩卡</h3>
+                <p>帶有巧克力風味的濃縮咖啡，配上奶泡，香甜又不失濃郁。</p>
+            </div>
+            <div class="recommended-item">
+                <img src="https://first-cafe.com/wp-content/uploads/2024/07/Americano-1-1-1024x768.webp" alt="美式咖啡">
+                <h3>美式咖啡</h3>
+                <p>純正的美式咖啡，濃烈的咖啡香氣，清新的口感。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact" id="about">
+        <h2>關於我們</h2>
+        <p>如果您有任何問題或想了解更多，請隨時聯絡我們：</p>
+        <p>Email: <a href="mailto:contact@coffeetime.com">contact@coffeetime.com</a></p>
+        <p>電話: (02) 2345-6789</p>
+        <p>地址: 台北市信義區信義路5段123號</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 咖啡時光 | <a href="#">隱私政策</a> | <a href="#">使用條款</a></p>
+    </div>
+</body>
+</html>
